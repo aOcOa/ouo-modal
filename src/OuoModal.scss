@@ -1,0 +1,127 @@
+
+@mixin only-mobile {
+  @media (max-width: 760px){
+    @content;
+  }
+}
+@mixin tablet {
+  @media (min-width: 760px){
+    @content;
+  }
+}
+
+@mixin laptop {
+  @media  (min-width: 1024px)   {
+    @content;
+  }
+}
+@mixin desktop {
+  @media  (min-width: 1440px)   {
+    @content;
+  }
+}
+
+@mixin carousel{
+  @media  (min-width: 680px)   {
+    @content;
+  }
+}
+
+.ouoModal {
+    display: none;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background-color: rgba(0, 0, 0, .2);
+    z-index: 1;
+    &.is-active {
+        display: block;
+        transition: .3s;
+        @include tablet {
+            animation: fade-in .4s ease-in-out;
+        }
+    }
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.ouoModal-wrap {
+    max-width: 90%;
+    background-color: #f9f9f9;
+    min-height: 300px;
+    width: 500px;
+    border: 1px solid yellow;
+    border-bottom: none;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    box-shadow: 0 0 12px 0px rgba(0, 0, 0, .2);
+    color:#4a4a4a;
+
+}
+.ouoModal-cancel{
+  width: 25px;
+  height: 25px;
+  display: inline-block;
+  position: absolute;
+  right: 20px;
+  cursor: pointer;
+  top: 20px;
+  &:before, &:after{
+    content: '';
+    width: 25px;
+    height: 2px;
+    display: block;
+    background-color: rgba(73, 73, 71, 0.76);
+    position: absolute;
+  }
+  &:before{
+    transform: rotate(45deg);
+  }
+  &:after{
+    transform: rotate(-45deg);
+  }
+  @include tablet{
+    &:hover{
+      opacity: .6;
+    }
+
+  }
+}
+.ouoModal-text,
+.ouoModal-link {
+    font-size: 1.125rem;
+    color: #4a4a4a;
+    text-align: center;
+    letter-spacing: 3px;
+}
+
+.ouoModal-text--big {
+    margin: 0;
+    font-size: 1.75rem;
+    color: #4a4a4a;
+    text-align: center;
+    letter-spacing: 3px;
+    margin-top: 20px;
+}
+
+.ouoModal-text--warn {
+    color: red;
+}
+
+.ouoModal-btn {
+    width: 100%;
+    margin-top: 18px;
+    font-weight: 300;
+}
