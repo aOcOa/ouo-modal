@@ -23,11 +23,14 @@ const rootDom = new JSDOM(`<!DOCTYPE html>
 
 document = rootDom.window.document;
 
-    let modal;
+let modal;
 
 describe("modal", () => {
   before(() => {
-    modal = new OuoModal({ context: document, initHtml: "<h1 class='greeting'>HELLO</h1>" });
+    modal = new OuoModal({
+      context: document,
+      initHtml: "<h1 class='greeting'>HELLO</h1>"
+    });
   });
 
   it("create Modal", () => {
@@ -35,10 +38,12 @@ describe("modal", () => {
   });
   it("open", () => {
     modal.open();
-    expect(document.getElementsByClassName("ouoModal")[0]).to.have.class('is-active');
+    expect(document.getElementsByClassName("ouoModal")[0]).to.have.class(
+      "is-active"
+    );
   });
   it("close", () => {
-     modal.close();
-     expect(document.getElementsByClassName("is-active").length).to.eql(0);
+    modal.close();
+    expect(document.getElementsByClassName("is-active").length).to.eql(0);
   });
 });
